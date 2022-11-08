@@ -21,6 +21,13 @@ async function run () {
             const products = await cursor.limit(3).toArray();
             res.send(products);
         })
+
+        app.get('/allproducts', async(req,res)=>{
+            const query = {};
+            const cursor = productCollection.find(query);
+            const products = await cursor.toArray();
+            res.send(products);
+        })
     }
     finally{
 
