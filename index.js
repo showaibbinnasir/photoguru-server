@@ -11,11 +11,23 @@ app.use(express.json())
 
 const uri = "mongodb+srv://photoguru:NaV2k6tBvUfurLsu@myfirstdb.w4kvmll.mongodb.net/?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
-});
+
+async function run () {
+    try{
+        const productCollection = client.db('photoguru').collection('products');
+        app.get('/products', async(req,res)=>{
+            const query = {};
+            const cursor = productCollection.find(query);
+            const products = await cursor.limit(3).toArray();
+            res.send(products);
+        })
+    }
+    finally{
+
+    }
+}
+
+run().catch(err => console.log(err))
 
 
 app.get('/', (req,res)=>{
