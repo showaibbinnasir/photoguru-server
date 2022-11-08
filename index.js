@@ -3,6 +3,7 @@ const app = express();
 const cors = require('cors')
 const port = process.env.PORT || 5000;
 const { MongoClient, ServerApiVersion } = require('mongodb');
+const { ObjectID, ObjectId } = require('bson');
 
 
 app.use(cors());
@@ -28,6 +29,12 @@ async function run () {
             const products = await cursor.toArray();
             res.send(products);
         })
+        app.get('/allproducts/:id', async(req,res)=> {
+            const id = req.params.id;
+            const query = { _id : ObjectId(id)}
+            const result = await productCollection.findOne(query);
+            res.send(result);
+         })
     }
     finally{
 
