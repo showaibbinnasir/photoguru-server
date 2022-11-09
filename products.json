@@ -26,6 +26,21 @@
         "img" : "https://i.pinimg.com/736x/00/b6/7c/00b67cc4838a520bf10b541763e022d7.jpg",
         "rating" : "4.7",
         "description" : "In this service , i work for wedding event only cinematography"
+    },
+    {
+        "productId" : "05",
+        "productName" : "Wedding cinematography and Photography",
+        "img" : "https://wbwp.s3.us-west-1.amazonaws.com/s3fs-public/inline-images/1-bride-and-groom-in-a-meadow-against-mountains-photo-by-j-la-plante-photo.jpg?VersionId=tAJ57WCp.YqVXp7xJQru3652GRAMPMcn",
+        "rating" : "4.7",
+        "description" : "In this service , i work for wedding event cinematography and Photography both."
+    },
+    {
+        "productId" : "06",
+        "productName" : "A complete Photography package",
+        "img" : "https://amatya.co.uk/wp-content/uploads/2019/11/wedding-photography-nepal-118.jpg",
+        "rating" : "4.7",
+        "description" : "In this service , i work for what you want to do."
     }
+    
     
 ]
