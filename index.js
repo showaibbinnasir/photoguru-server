@@ -30,6 +30,12 @@ async function run () {
             const products = await cursor.toArray();
             res.send(products);
         })
+        app.post('/allproducts', async(req, res)=>{
+            const user = req.body;
+            const result = await productCollection.insertOne(user);
+            console.log(result);
+            res.send(user);
+        })
         app.get('/allproducts/:id', async(req,res)=> {
             const id = req.params.id;
             const query = { _id : ObjectId(id)}
@@ -38,11 +44,38 @@ async function run () {
          })
 
          app.get('/reviews', async(req,res)=>{
-            const query = {};
+            let query = {};
+            if(req.query.id){
+                query = {
+                    productId : req.query.id
+                }
+            }
+            
             const cursor = reviewCollection.find(query);
             const review = await cursor.toArray();
             res.send(review);
          })
+         
+         app.get('/addreview/:id', async(req,res)=> {
+            const id = req.params.id;
+            const query = { _id : ObjectId(id)}
+            const result = await productCollection.findOne(query);
+            res.send(result);
+         })
+         app.post('/reviews', async(req, res)=>{
+            const user = req.body;
+            const result = await reviewCollection.insertOne(user);
+            console.log(result);
+            res.send(user);
+        })
+        app.delete('/review/:id', async(req,res)=>{
+            const data = req.params.id;
+            const query = {_id : ObjectId(data)};
+            const result = await reviewCollection.deleteOne(query);
+            console.log(result)
+            res.send(result)
+         })
+         
     }
     finally{
 
